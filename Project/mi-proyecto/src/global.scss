@@ -1,0 +1,56 @@
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* Ionic Dark Mode - forzamos el modo oscuro siempre */
+@import '@ionic/angular/css/palettes/dark.always.css';
+
+/* ---------------------------------------------
+   Estilos globales del sistema Obsidian
+   ---------------------------------------------
+   Le damos a todas las tarjetas border-radius de 16px,
+   sombra suave y margen de 16px para mantener un diseño
+   consistente en todas las vistas de la aplicación. */
+
+ion-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin: 16px;
+}
+
+/* Transiciones suaves para que la interfaz se sienta fluida */
+ion-card, ion-item, ion-button {
+  transition: all 0.2s ease;
+}
+
+/* Scroll personalizado con el color primario de la app */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ion-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ion-color-primary);
+  border-radius: 3px;
+}
+
+/* Color de selección de texto acorde al tema */
+::selection {
+  background: rgba(124, 77, 255, 0.3);
+  color: #fff;
+}

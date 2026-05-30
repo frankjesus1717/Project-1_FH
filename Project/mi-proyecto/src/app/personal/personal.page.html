@@ -1,0 +1,44 @@
+<!--
+  Vista de Información Personal con iconos por campo.
+  El avatar grande arriba y los iconos en cada fila
+  le dan un aspecto más profesional a la interfaz.
+  En móvil se ve correctamente porque las tarjetas se adaptan
+  solas al ancho de la pantalla.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Informacion Personal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <div class="avatar-wrapper">
+        <ion-icon name="person-circle" class="avatar-icon"></ion-icon>
+      </div>
+      <ion-card-title class="ion-text-center">Mis Datos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        @for (item of personalInfo; track item.label) {
+          <ion-item>
+            <ion-icon
+              aria-hidden="true"
+              [name]="item.icon"
+              slot="start"
+              class="field-icon"
+            ></ion-icon>
+            <ion-label>
+              <h2>{{ item.label }}</h2>
+              <p>{{ item.value }}</p>
+            </ion-label>
+          </ion-item>
+        }
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

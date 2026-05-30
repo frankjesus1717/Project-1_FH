@@ -1,0 +1,61 @@
+<!--
+  Pantalla de inicio: aquí se da la bienvenida al usuario.
+  El botón de menú (ion-menu-button) permite abrir
+  el menú en dispositivos móviles. Después de la tarjeta
+  principal vienen tres tarjetas con las características
+  clave de la aplicación.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+    <ion-icon slot="end" name="home" class="header-icon"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Tarjeta principal con el saludo de bienvenida -->
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <div class="welcome-icon-wrapper">
+        <ion-icon name="home" class="welcome-icon"></ion-icon>
+      </div>
+      <ion-card-title>Bienvenido a mi app</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Esta aplicacion fue desarrollada con Ionic 8 y Angular 20,
+        siguiendo el sistema de diseno Obsidian. Aca puedes ver
+        informacion personal y enviar un mensaje de contacto.
+      </p>
+      <ion-button
+        expand="block"
+        color="primary"
+        routerLink="/personal"
+        class="ion-margin-top"
+      >
+        <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+        Ver Informacion Personal
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Tarjetas que resumen las secciones de la app -->
+  <ion-grid>
+    <ion-row>
+      @for (feature of features; track feature.label) {
+        <ion-col size="12" size-md="4">
+          <ion-card class="feature-card">
+            <ion-card-content class="ion-text-center">
+              <ion-icon [name]="feature.icon" class="feature-icon"></ion-icon>
+              <h3>{{ feature.label }}</h3>
+              <p>{{ feature.desc }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+</ion-content>

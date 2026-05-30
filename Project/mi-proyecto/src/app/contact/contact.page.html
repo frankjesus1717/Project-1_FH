@@ -1,0 +1,125 @@
+<!--
+  Formulario de contacto con envío real.
+  Cada campo tiene su icono y muestra error si la validación
+  no pasa. El botón cambia a "Enviando..." con un spinner
+  mientras se procesa la solicitud. Si todo sale bien,
+  mostramos una pantalla de confirmación.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (!submitted) {
+    <ion-card>
+      <ion-card-header>
+        <div class="contact-icon-wrapper">
+          <ion-icon name="chatbubble-ellipses" class="contact-icon"></ion-icon>
+        </div>
+        <ion-card-title class="ion-text-center">Escribime</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <ion-list>
+            <ion-item>
+              <ion-icon
+                aria-hidden="true"
+                name="person-outline"
+                slot="start"
+                class="field-icon"
+              ></ion-icon>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input formControlName="nombre" type="text"></ion-input>
+            </ion-item>
+            @if (contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched) {
+              <ion-note color="danger" class="ion-padding-start">
+                El nombre es requerido (minimo 3 caracteres).
+              </ion-note>
+            }
+
+            <ion-item>
+              <ion-icon
+                aria-hidden="true"
+                name="mail-outline"
+                slot="start"
+                class="field-icon"
+              ></ion-icon>
+              <ion-label position="floating">Correo Electronico</ion-label>
+              <ion-input formControlName="email" type="email"></ion-input>
+            </ion-item>
+            @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+              <ion-note color="danger" class="ion-padding-start">
+                Ingresa un correo electronico valido.
+              </ion-note>
+            }
+
+            <ion-item>
+              <ion-icon
+                aria-hidden="true"
+                name="chatbox-outline"
+                slot="start"
+                class="field-icon"
+              ></ion-icon>
+              <ion-label position="floating">Mensaje</ion-label>
+              <ion-textarea formControlName="mensaje" rows="4"></ion-textarea>
+            </ion-item>
+            @if (contactForm.get('mensaje')?.invalid && contactForm.get('mensaje')?.touched) {
+              <ion-note color="danger" class="ion-padding-start">
+                El mensaje debe tener al menos 10 caracteres.
+              </ion-note>
+            }
+          </ion-list>
+
+          @if (sendError) {
+            <ion-note color="danger" class="error-message">
+              <ion-icon name="close-circle" class="error-icon"></ion-icon>
+              {{ sendError }}
+            </ion-note>
+          }
+
+          <ion-button
+            type="submit"
+            expand="block"
+            color="primary"
+            class="ion-margin-top"
+            [disabled]="contactForm.invalid || sending"
+          >
+            @if (sending) {
+              <ion-spinner slot="start"></ion-spinner>
+              Enviando...
+            } @else {
+              <ion-icon slot="start" name="chatbubble-ellipses-outline"></ion-icon>
+              Enviar Mensaje
+            }
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  } @else {
+    <ion-card>
+      <ion-card-header>
+        <div class="success-icon-wrapper">
+          <ion-icon name="checkmark-circle" class="success-icon"></ion-icon>
+        </div>
+        <ion-card-title class="ion-text-center">Listo, {{ submittedName }}!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-text-center">
+        <p>Gracias por escribirme. Te respondere pronto.</p>
+        <p class="email-hint">El mensaje fue enviado correctamente.</p>
+        <ion-button
+          expand="block"
+          color="primary"
+          class="ion-margin-top"
+          (click)="submitted = false; contactForm.reset()"
+        >
+          Enviar otro mensaje
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  }
+</ion-content>

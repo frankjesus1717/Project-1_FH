@@ -1,0 +1,47 @@
+<!--
+  Estructura principal con el menú lateral.
+  El ion-menu usa type="overlay" para que en pantallas
+  pequeñas se superponga al contenido. El encabezado del
+  menú tiene un perfil visual con avatar y nombre.
+  Los iconos se adaptan a la plataforma con -outline y -sharp.
+-->
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Mi App</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <div class="menu-profile">
+          <ion-icon name="person-circle" class="menu-avatar"></ion-icon>
+          <h2>Franklin Hernandez</h2>
+          <p>Analista Informático</p>
+        </div>
+        <ion-list>
+          @for (p of appPages; track p.title) {
+            <ion-menu-toggle auto-hide="false">
+              <ion-item
+                [routerLink]="[p.url]"
+                routerDirection="root"
+                routerLinkActive="selected"
+                lines="none"
+                detail="false"
+              >
+                <ion-icon
+                  aria-hidden="true"
+                  slot="start"
+                  [ios]="p.icon + '-outline'"
+                  [md]="p.icon + '-sharp'"
+                ></ion-icon>
+                <ion-label>{{ p.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          }
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

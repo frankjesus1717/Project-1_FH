@@ -1,0 +1,73 @@
+// Estilos del formulario de contacto.
+// Incluye iconos decorativos, estado de carga con spinner,
+// mensajes de error y pantalla de exito.
+
+.contact-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.contact-icon {
+  font-size: 56px;
+  color: var(--ion-color-primary);
+  padding: 16px;
+  border-radius: 50%;
+  background: rgba(124, 77, 255, 0.1);
+}
+
+.success-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.success-icon {
+  font-size: 64px;
+  color: #2ecc71;
+}
+
+.field-icon {
+  font-size: 20px;
+  color: var(--ion-color-primary);
+  margin-right: 4px;
+}
+
+ion-note {
+  padding-left: 56px;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 4px;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  background: rgba(255, 59, 48, 0.1);
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.error-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.email-hint {
+  font-size: 0.85rem;
+  color: rgba(244, 244, 249, 0.55);
+  margin-top: 8px;
+}
+
+ion-button[disabled] {
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .contact-icon {
+    font-size: 72px;
+  }
+}

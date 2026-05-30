@@ -1,0 +1,68 @@
+// Estilos del menú lateral Obsidian.
+// Incluye el perfil de usuario, los items del menú
+// con bordes redondeados y el resaltado del item activo.
+
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+ion-menu ion-list {
+  padding: 8px 0;
+}
+
+ion-menu ion-item {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  border-radius: 12px;
+  margin: 2px 8px;
+  --min-height: 48px;
+}
+
+ion-menu ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.18);
+}
+
+ion-menu ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu ion-item ion-icon {
+  color: #616e7e;
+  font-size: 22px;
+}
+
+ion-menu ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
+
+// Perfil del usuario en el menú
+.menu-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 16px;
+  text-align: center;
+}
+
+.menu-avatar {
+  font-size: 64px;
+  color: var(--ion-color-primary);
+  margin-bottom: 8px;
+}
+
+.menu-profile h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ion-text-color);
+}
+
+.menu-profile p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: rgba(244, 244, 249, 0.6);
+}
