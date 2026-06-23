@@ -1,0 +1,165 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (!submitted) {
+    <ion-card class="anim-fade-in-up card-hover-scale">
+      <ion-card-header>
+        <div class="contact-icon-wrapper">
+          <ion-icon name="chatbubble-ellipses" class="contact-icon"></ion-icon>
+        </div>
+        <ion-card-title class="ion-text-center">Escribime</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <ion-list>
+            <ion-item
+              class="anim-stagger-1"
+              [class.field-focused]="focusedField === 'nombre'"
+              [class.field-error]="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched"
+            >
+              <ion-icon
+                aria-hidden="true"
+                name="person-outline"
+                slot="start"
+                class="field-icon"
+                [class.icon-active]="focusedField === 'nombre'"
+              ></ion-icon>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input
+                formControlName="nombre"
+                type="text"
+                (ionFocus)="onFocus('nombre')"
+                (ionBlur)="onBlur()"
+              ></ion-input>
+            </ion-item>
+            @if (contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched) {
+              <ion-note color="danger" class="anim-shake ion-padding-start">
+                El nombre es requerido (minimo 3 caracteres).
+              </ion-note>
+            }
+
+            <ion-item
+              class="anim-stagger-2"
+              [class.field-focused]="focusedField === 'email'"
+              [class.field-error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+            >
+              <ion-icon
+                aria-hidden="true"
+                name="mail-outline"
+                slot="start"
+                class="field-icon"
+                [class.icon-active]="focusedField === 'email'"
+              ></ion-icon>
+              <ion-label position="floating">Correo Electronico</ion-label>
+              <ion-input
+                formControlName="email"
+                type="email"
+                (ionFocus)="onFocus('email')"
+                (ionBlur)="onBlur()"
+              ></ion-input>
+            </ion-item>
+            @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+              <ion-note color="danger" class="anim-shake ion-padding-start">
+                Ingresa un correo electronico valido.
+              </ion-note>
+            }
+
+            <ion-item
+              class="anim-stagger-3"
+              [class.field-focused]="focusedField === 'mensaje'"
+              [class.field-error]="contactForm.get('mensaje')?.invalid && contactForm.get('mensaje')?.touched"
+            >
+              <ion-icon
+                aria-hidden="true"
+                name="chatbox-outline"
+                slot="start"
+                class="field-icon"
+                [class.icon-active]="focusedField === 'mensaje'"
+              ></ion-icon>
+              <ion-label position="floating">Mensaje</ion-label>
+              <ion-textarea
+                formControlName="mensaje"
+                rows="4"
+                (ionFocus)="onFocus('mensaje')"
+                (ionBlur)="onBlur()"
+              ></ion-textarea>
+            </ion-item>
+            @if (focusedField === 'mensaje') {
+              <div class="char-counter" [class.char-over]="charCount > 0 && charCount < 10">
+                {{ charCount }}/10 min
+              </div>
+            }
+            @if (contactForm.get('mensaje')?.invalid && contactForm.get('mensaje')?.touched) {
+              <ion-note color="danger" class="anim-shake ion-padding-start">
+                El mensaje debe tener al menos 10 caracteres.
+              </ion-note>
+            }
+          </ion-list>
+
+          @if (sendError) {
+            <ion-note color="danger" class="error-message anim-shake">
+              <ion-icon name="close-circle" class="error-icon"></ion-icon>
+              {{ sendError }}
+            </ion-note>
+          }
+
+          @if (sending) {
+            <div class="sending-overlay anim-pop-in">
+              <div class="sending-content">
+                <ion-icon name="send" class="sending-icon"></ion-icon>
+                <span class="sending-text">Enviando mensaje</span>
+                <div class="sending-dots">
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                  <span class="dot"></span>
+                </div>
+              </div>
+            </div>
+          }
+
+          @if (!sending) {
+            <ion-button
+              type="submit"
+              expand="block"
+              color="primary"
+              class="ion-margin-top btn-submit anim-stagger-4 btn-hover-spin"
+              [disabled]="contactForm.invalid"
+            >
+              <ion-icon slot="start" name="send"></ion-icon>
+              Enviar Mensaje
+            </ion-button>
+          }
+        </form>
+      </ion-card-content>
+    </ion-card>
+  } @else {
+    <ion-card class="anim-scale-in card-hover-scale">
+      <ion-card-header>
+        <div class="success-icon-wrapper">
+          <ion-icon name="checkmark-circle" class="success-icon anim-bounce-in"></ion-icon>
+        </div>
+        <ion-card-title class="ion-text-center anim-fade-in-up">Listo, {{ submittedName }}!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-text-center">
+        <p class="anim-fade-in-up" style="animation-delay: 0.3s">Gracias por escribirme. Te respondere pronto.</p>
+        <p class="email-hint anim-fade-in-up" style="animation-delay: 0.5s">El mensaje fue enviado correctamente.</p>
+        <ion-button
+          expand="block"
+          color="primary"
+          class="ion-margin-top anim-fade-in-up btn-hover-spin"
+          style="animation-delay: 0.7s"
+          (click)="resetForm()"
+        >
+          Enviar otro mensaje
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  }
+</ion-content>

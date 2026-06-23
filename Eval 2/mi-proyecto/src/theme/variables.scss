@@ -1,0 +1,21 @@
+// Ionic Variables and Theming
+// ---------------------------------------------
+// Colores personalizados del tema siguiendo
+// la paleta Obsidian: el violeta #7C4DFF como color principal,
+// fondo oscuro #0F111A para darle un estilo moderno y textos
+// en #F4F4F9 para que contrasten bien en modo oscuro.
+
+:root {
+  --ion-color-primary: #7C4DFF;
+  --ion-color-primary-rgb: 124, 77, 255;
+  --ion-color-primary-contrast: #FFFFFF;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #6A3FE0;
+  --ion-color-primary-tint: #9166FF;
+
+  --ion-background-color: #0F111A;
+  --ion-background-color-rgb: 15, 17, 26;
+  --ion-item-background: #1A1C26;
+  --ion-text-color: #F4F4F9;
+  --ion-text-color-rgb: 244, 244, 249;
+}

@@ -1,0 +1,66 @@
+/* ------------------------------------------------------------------
+   PÁGINA DE INICIO
+   ------------------------------------------------------------------
+   Diseño mobile-first: las tarjetas se adaptan al ancho de la
+   pantalla y los iconos decorativos siguen la paleta Obsidian. */
+
+.header-icon {
+  font-size: 24px;
+  margin-right: 16px;
+  color: var(--ion-color-primary-tint);
+}
+
+.welcome-card {
+  margin-bottom: 8px;
+}
+
+.welcome-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.welcome-icon {
+  font-size: 56px;
+  color: var(--ion-color-primary);
+  padding: 16px;
+  border-radius: 50%;
+  background: rgba(124, 77, 255, 0.1);
+}
+
+.feature-card {
+  margin: 8px 0;
+}
+
+.feature-card:active {
+  transform: scale(0.97);
+}
+
+.feature-icon {
+  font-size: 40px;
+  color: var(--ion-color-primary);
+  margin-bottom: 8px;
+}
+
+.feature-card h3 {
+  margin: 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ion-text-color);
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(244, 244, 249, 0.6);
+}
+
+@media (min-width: 768px) {
+  .welcome-icon {
+    font-size: 72px;
+  }
+
+  .feature-card {
+    margin: 8px;
+  }
+}

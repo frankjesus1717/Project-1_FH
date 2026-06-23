@@ -1,0 +1,43 @@
+/* ------------------------------------------------------------------
+   PÁGINA DE INFORMACIÓN PERSONAL
+   ------------------------------------------------------------------
+   Avatar decorativo en la cabecera de la tarjeta e iconos
+   de campo con el color primario del tema. */
+
+.avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.avatar-icon {
+  font-size: 72px;
+  color: var(--ion-color-primary);
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(124, 77, 255, 0.1);
+}
+
+.field-icon {
+  font-size: 22px;
+  color: var(--ion-color-primary);
+  margin-right: 8px;
+}
+
+ion-item h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ion-text-color);
+  margin-bottom: 4px;
+}
+
+ion-item p {
+  font-size: 0.85rem;
+  color: rgba(244, 244, 249, 0.65);
+}
+
+@media (min-width: 768px) {
+  .avatar-icon {
+    font-size: 96px;
+  }
+}

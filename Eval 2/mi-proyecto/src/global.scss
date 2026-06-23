@@ -1,0 +1,176 @@
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import '@ionic/angular/css/palettes/dark.always.css';
+
+/* ------------------------------------------------------------------
+   SISTEMA OBSIDIAN — Configuración visual global
+   ------------------------------------------------------------------
+   Se aplican bordes redondeados de 16px, sombra neumórfica y
+   márgenes uniformes de 16px en todas las tarjetas para mantener
+   una apariencia coherente en cada pantalla de la aplicación. */
+
+ion-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin: 16px;
+}
+
+ion-card,
+ion-item,
+ion-button {
+  transition: all 0.2s ease;
+}
+
+/* ------------------------------------------------------------------
+   ANIMACIONES GLOBALES
+   ------------------------------------------------------------------
+   Estas animaciones se utilizan en toda la aplicación para
+   proporcionar retroalimentación visual consistente. */
+
+/* Efecto de rotación continua para iconos dentro de botones */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animación de pulsación para estados de carga o envío */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Aumento de tamaño con desplazamiento hacia arriba */
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animación de deslizamiento lateral para mensajes de éxito */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animación para el mensaje de error tipo shake */
+@keyframes shake-global {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+/* ------------------------------------------------------------------
+   CLASES DE ANIMACIÓN REUTILIZABLES
+   ------------------------------------------------------------------
+   Se aplican mediante la directiva class en los componentes
+   para activar las animaciones definidas arriba. */
+
+.btn-hover-spin:hover ion-icon {
+  animation: spin 0.5s ease-in-out;
+}
+
+.card-hover-scale {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover-scale:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.item-hover-scale {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.anim-pop-in {
+  animation: pop-in 0.4s ease-out both;
+}
+
+.anim-slide-in-right {
+  animation: slide-in-right 0.5s ease-out both;
+}
+
+.anim-shake-global {
+  animation: shake-global 0.4s ease-out both;
+}
+
+.anim-pulse {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------
+   ESTADOS DE INTERACCIÓN
+   ------------------------------------------------------------------
+   Cambios visuales que ocurren al interactuar con elementos
+   como botones deshabilitados o áreas de scroll. */
+
+ion-button[disabled] {
+  opacity: 0.5;
+}
+
+/* Personalización de la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ion-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ion-color-primary);
+  border-radius: 3px;
+}
+
+/* Color de selección de texto acorde al tema */
+::selection {
+  background: rgba(124, 77, 255, 0.3);
+  color: #fff;
+}
